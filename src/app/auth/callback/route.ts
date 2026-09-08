@@ -12,9 +12,13 @@ export async function GET(request: Request) {
   const type = url.searchParams.get("type");
   const supabase = await createClient();
 
-  if (code) await supabase.auth.exchangeCodeForSession(code);
+  if (code) {
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) return NextResponse.redirect(new URL(`/login?error=${encodeURIComponent(error.message)}`, url.origin));
+  }
   else if (tokenHash && (type === "email" || type === "recovery")) {
-    await supabase.auth.verifyOtp({ token_hash: tokenHash, type });
+    const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type });
+    if (error) return NextResponse.redirect(new URL(`/login?error=${encodeURIComponent(error.message)}`, url.origin));
   }
 
   const { data: { user } } = await supabase.auth.getUser();
