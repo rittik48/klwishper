@@ -1,0 +1,1 @@
+export default function AdminUsersPage() { return <main className="font-ui mx-auto max-w-5xl px-6 py-16"><h1 className="font-serif text-5xl">Users</h1><p className="mt-5 text-[var(--muted)]">Account moderation is protected by server-side admin checks.</p></main>; }

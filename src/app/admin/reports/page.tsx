@@ -1,0 +1,1 @@
+export default function AdminReportsPage() { return <main className="font-ui mx-auto max-w-5xl px-6 py-16"><h1 className="font-serif text-5xl">Reports</h1><p className="mt-5 text-[var(--muted)]">Open reports will appear here for authorized administrators.</p></main>; }

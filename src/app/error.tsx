@@ -1,0 +1,2 @@
+"use client";
+export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) { return <main className="font-ui flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center"><h1 className="font-serif text-4xl">Something interrupted the conversation.</h1><button className="rounded-full bg-[var(--teal)] px-5 py-3 font-bold text-white" onClick={() => reset()}>Try again</button></main>; }

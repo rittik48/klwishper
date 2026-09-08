@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+	--ink: #102526;
+	--muted: #6b7d80;
+	--paper: #eef4f2;
+	--panel: rgba(255, 255, 255, .82);
+	--line: rgba(16, 37, 38, .12);
+	--teal: #00a98f;
+	--teal-dark: #006f68;
+	--coral: #ff806d;
+	--cyan: #62d8f3;
+	--shadow: 0 25px 70px rgba(3, 45, 45, .14);
+}
+
+:root.dark {
+	--ink: #e6f4f1;
+	--muted: #8fa8aa;
+	--paper: #071214;
+	--panel: rgba(14, 31, 34, .78);
+	--line: rgba(178, 232, 225, .14);
+	--teal: #38e6c2;
+	--teal-dark: #8af8df;
+	--coral: #ff927d;
+	--cyan: #79ddf8;
+	--shadow: 0 25px 75px rgba(0, 0, 0, .35);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; transition: background .3s ease, color .3s ease; }
+body::before { position: fixed; inset: 0; z-index: -1; background-image: linear-gradient(rgba(0, 169, 143, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 169, 143, .045) 1px, transparent 1px); background-size: 42px 42px; content: ""; mask-image: linear-gradient(to bottom, black, transparent 80%); pointer-events: none; }
+button, input, textarea, select { font: inherit; }
+.font-ui { font-family: "Trebuchet MS", Arial, sans-serif; }
+.icon-button { display: inline-flex; height: 38px; width: 38px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--ink); cursor: pointer; transition: transform .2s ease, border-color .2s ease, color .2s ease; }
+.icon-button:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+.glass-panel { border: 1px solid var(--line); background: var(--panel); box-shadow: var(--shadow); backdrop-filter: blur(18px); }
+.eyebrow { color: var(--teal); font-family: "Trebuchet MS", Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }

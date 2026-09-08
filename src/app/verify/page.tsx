@@ -1,0 +1,1 @@
+export default function VerifyPage() { return <main className="font-ui mx-auto max-w-xl px-6 py-16"><h1 className="font-serif text-5xl">Check your inbox.</h1><p className="mt-5 text-[var(--muted)]">Use the secure link sent to your college email to continue.</p></main>; }

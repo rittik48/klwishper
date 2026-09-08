@@ -1,0 +1,1 @@
+export default function ProfilePage() { return <main className="font-ui mx-auto max-w-3xl px-6 py-16"><h1 className="font-serif text-5xl">Your anonymous profile</h1><p className="mt-5 text-[var(--muted)]">Your department and year help shape your feed. Other students never see your college email or account identity.</p></main>; }

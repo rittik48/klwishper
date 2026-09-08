@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <main className="font-ui flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center"><p className="text-sm font-bold text-[var(--teal)]">404</p><h1 className="font-serif text-5xl">This thread wandered off.</h1><Link className="rounded-full bg-[var(--teal)] px-5 py-3 font-bold text-white" href="/">Return home</Link></main>; }

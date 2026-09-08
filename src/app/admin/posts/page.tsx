@@ -1,0 +1,1 @@
+export default function AdminPostsPage() { return <main className="font-ui mx-auto max-w-5xl px-6 py-16"><h1 className="font-serif text-5xl">Posts</h1><p className="mt-5 text-[var(--muted)]">Moderation actions never expose private ownership data to regular users.</p></main>; }

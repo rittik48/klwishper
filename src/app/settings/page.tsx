@@ -1,0 +1,1 @@
+export default function SettingsPage() { return <main className="font-ui mx-auto max-w-3xl px-6 py-16"><h1 className="font-serif text-5xl">Settings</h1><p className="mt-5 text-[var(--muted)]">Manage your account, notifications, and privacy preferences after signing in.</p></main>; }

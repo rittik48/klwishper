@@ -1,0 +1,1 @@
+export default function OnboardingPage() { return <main className="font-ui mx-auto max-w-xl px-6 py-16"><h1 className="font-serif text-5xl">A little context helps.</h1><p className="mt-5 text-[var(--muted)]">After verifying your college email, choose your department and year so conversations can feel relevant without revealing who you are.</p></main>; }
