@@ -17,5 +17,8 @@ export async function GET(request: Request) {
     await supabase.auth.verifyOtp({ token_hash: tokenHash, type });
   }
 
-  return NextResponse.redirect(new URL("/home", url.origin));
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.redirect(new URL("/login?error=Sign-in+could+not+be+completed", url.origin));
+  const { data: profile } = await supabase.from("profiles").select("id").eq("id", user.id).maybeSingle();
+  return NextResponse.redirect(new URL(profile ? "/home" : "/onboarding", url.origin));
 }
