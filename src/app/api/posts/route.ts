@@ -7,6 +7,7 @@ export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Authentication required" }, { status: 401 });
+  await supabase.from("profiles").upsert({ id: user.id }, { onConflict: "id" });
   const quota = rateLimit(`post:${user.id}`, 5);
   if (!quota.allowed) return NextResponse.json({ error: "Posting limit reached" }, { status: 429 });
   const parsed = postSchema.safeParse(await request.json().catch(() => null));
