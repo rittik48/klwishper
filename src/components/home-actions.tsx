@@ -18,7 +18,7 @@ export function HomeActions({ rooms }: { rooms: Room[] }) {
     setMessage("");
     const response = await fetch("/api/posts", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ roomId, content }) });
     const result = await response.json();
-    setMessage(response.ok ? "Posted anonymously." : result.error ?? "Could not publish post.");
+    setMessage(response.ok ? "Posted anonymously." : result.error ?? "Could not publish post. Run the Supabase migrations first.");
     if (response.ok) setContent("");
     setBusy(false);
   }
@@ -29,7 +29,7 @@ export function HomeActions({ rooms }: { rooms: Room[] }) {
     setMessage("");
     const response = await fetch("/api/rooms", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: groupName, description: "Student-created anonymous discussion group", type: "general" }) });
     const result = await response.json();
-    setMessage(response.ok ? "Group created. Refresh to see it in your rooms." : result.error ?? "Could not create group.");
+    setMessage(response.ok ? "Group created. Refresh to see it in your rooms." : result.error ?? "Could not create group. Run the Supabase migrations first.");
     if (response.ok) setGroupName("");
     setBusy(false);
   }
