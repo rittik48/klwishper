@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "WhisperKL",
+  version: "0.2",
   collegeName: "KL University",
   emailDomain: "kluniversity.in",
   adminEmail: "practicemore98@gmail.com",

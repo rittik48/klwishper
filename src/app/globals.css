@@ -36,3 +36,7 @@ button, input, textarea, select { font: inherit; }
 .icon-button:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
 .glass-panel { border: 1px solid var(--line); background: var(--panel); box-shadow: var(--shadow); backdrop-filter: blur(18px); }
 .eyebrow { color: var(--teal); font-family: "Trebuchet MS", Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.version-badge { position: fixed; right: 14px; bottom: 14px; z-index: 50; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--muted); font: 700 10px/1 "Trebuchet MS", Arial, sans-serif; letter-spacing: .08em; padding: 7px 9px; box-shadow: var(--shadow); backdrop-filter: blur(12px); }
+.dark .bg-white { background-color: var(--panel) !important; }
+.dark .text-black, .dark .text-zinc-950 { color: var(--ink) !important; }
+.dark .border-white { border-color: var(--line) !important; }

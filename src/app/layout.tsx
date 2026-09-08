@@ -10,6 +10,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en"><body>{children}</body></html>
+    <html lang="en"><body><script dangerouslySetInnerHTML={{ __html: `try { if (localStorage.getItem("whisperkl-theme") === "dark") document.documentElement.classList.add("dark"); } catch {}` }} />{children}<span className="version-badge">v{siteConfig.version}</span></body></html>
   );
 }
