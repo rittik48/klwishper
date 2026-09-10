@@ -1,7 +1,7 @@
 import { randomBytes } from "node:crypto";
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { profileSchema } from "@/lib/validation";
+import { detectStudentDetails } from "@/lib/student-id";
 
 function anonymousLabel() {
   return `Anonymous #${randomBytes(2).toString("hex").toUpperCase()}`;
@@ -28,13 +28,12 @@ export async function PATCH() {
   return NextResponse.json({ profile: data });
 }
 
-export async function PUT(request: Request) {
+export async function PUT(_request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Authentication required" }, { status: 401 });
-  const parsed = profileSchema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: "Department and year are required" }, { status: 400 });
-  const { data, error } = await supabase.from("profiles").upsert({ id: user.id, ...parsed.data }, { onConflict: "id" }).select("id, anonymous_label, department, year").single();
+  const details = detectStudentDetails(user.email ?? "");
+  const { data, error } = await supabase.from("profiles").upsert({ id: user.id, department: details.department, year: details.year }, { onConflict: "id" }).select("id, anonymous_label, department, year").single();
   if (error) return NextResponse.json({ error: "Unable to save profile" }, { status: 400 });
   return NextResponse.json({ profile: data });
 }
