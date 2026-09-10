@@ -28,7 +28,7 @@ export async function PATCH() {
   return NextResponse.json({ profile: data });
 }
 
-export async function PUT(_request: Request) {
+export async function PUT() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Authentication required" }, { status: 401 });
