@@ -7,7 +7,10 @@ export async function POST(request: Request) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Authentication required" }, { status: 401 });
-  const { error: profileError } = await supabase.from("profiles").upsert({ id: user.id }, { onConflict: "id" });
+  const { error: profileError } = await supabase.from("profiles").upsert(
+    { id: user.id, department: "Undeclared", year: "Undeclared" },
+    { onConflict: "id", ignoreDuplicates: true },
+  );
   if (profileError) {
     console.error("Post profile bootstrap failed", profileError);
     return NextResponse.json({ error: "Your profile is not ready. Complete onboarding first." }, { status: 400 });
