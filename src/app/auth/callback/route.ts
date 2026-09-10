@@ -23,6 +23,7 @@ export async function GET(request: Request) {
 
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.redirect(new URL("/login?error=Sign-in+could+not+be+completed", url.origin));
+  if (type === "recovery") return NextResponse.redirect(new URL("/reset-password", url.origin));
   const { data: profile } = await supabase.from("profiles").select("id").eq("id", user.id).maybeSingle();
   return NextResponse.redirect(new URL(profile ? "/home" : "/onboarding", url.origin));
 }
