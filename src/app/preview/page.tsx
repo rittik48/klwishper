@@ -1,7 +1,6 @@
 import { ArrowLeft, Heart, MessageCircle, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { siteConfig } from "@/config/site";
 import Home from "@/app/page";
 
 type PreviewPost = { id: string; content: string; created_at: string; room_id: string };
