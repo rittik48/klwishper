@@ -19,7 +19,7 @@ export function AccountAccess() {
     setBusy(true);
     const client = createClient();
     if (mode === "signup") {
-      const { error } = await client.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/auth/callback?flow=signup`, shouldCreateUser: true } });
+      const { error } = await client.auth.signInWithOtp({ email, options: { emailRedirectTo: `${window.location.origin}/auth/callback`, shouldCreateUser: true } });
       setMessage(error ? `Could not send verification link: ${error.message}` : "Verification link sent once. Check your college inbox and quarantine folder, release it, then click it once.");
     } else {
       const { error } = await client.auth.signInWithPassword({ email, password });
