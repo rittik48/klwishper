@@ -44,3 +44,5 @@ button, input, textarea, select { font: inherit; }
 .dark .bg-white { background-color: var(--panel) !important; }
 .dark .text-black, .dark .text-zinc-950 { color: var(--ink) !important; }
 .dark .border-white { border-color: var(--line) !important; }
+.dark-select { color: var(--ink); color-scheme: dark; }
+.dark-select option { background: #0e1f22; color: #e6f4f1; }
