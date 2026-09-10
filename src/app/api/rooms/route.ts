@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       ? "A group with this name already exists"
       : error.code === "42501"
         ? "You do not have permission to create this group. Apply the latest database migration."
-        : "Unable to create group. Apply the latest database migration and retry.";
+        : `Unable to create group (${error.code ?? "database error"}): ${error.message}`;
     return NextResponse.json({ error: message }, { status: 400 });
   }
   const { error: membershipError } = await supabase.from("room_members").insert({ room_id: data.id, user_id: user.id, status: "approved" });
