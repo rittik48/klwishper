@@ -10,6 +10,7 @@ export async function GET(request: Request) {
   const code = url.searchParams.get("code");
   const tokenHash = url.searchParams.get("token_hash");
   const type = url.searchParams.get("type");
+  const flow = url.searchParams.get("flow");
   const supabase = await createClient();
 
   if (code) {
@@ -24,5 +25,5 @@ export async function GET(request: Request) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.redirect(new URL("/login?error=Sign-in+could+not+be+completed", url.origin));
   const { data: profile } = await supabase.from("profiles").select("id").eq("id", user.id).maybeSingle();
-  return NextResponse.redirect(new URL(profile ? "/home" : "/onboarding", url.origin));
+  return NextResponse.redirect(new URL(flow === "signup" || !profile ? "/onboarding" : "/home", url.origin));
 }
