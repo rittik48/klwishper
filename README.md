@@ -203,6 +203,12 @@ Migrations are in `supabase/migrations` and must be run in order in Supabase SQL
    - Adds conversations, conversation members, and messages.
    - Replaces permissive room/post policies with public-or-member checks.
    - Adds `public_feed`, `search_public_rooms`, `start_conversation`, and `conversation_messages` RPCs.
+6. `0006_search_and_join_hardening.sql`
+   - Makes public joins idempotent and allows discoverable private-room requests.
+   - Adds owner membership-update permission.
+   - Adds anonymous-user search without exposing email/student IDs.
+   - Reuses existing conversations instead of creating duplicates.
+   - Removes the recursive conversation-membership policy.
 
 Paste SQL contents, not filenames. If an earlier migration was already applied, do not rerun the original migration blindly. Run the next migration only.
 
